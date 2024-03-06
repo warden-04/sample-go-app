@@ -1,0 +1,17 @@
+name: deployment
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploying App Container
+        run: |
+          ls -la
