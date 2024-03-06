@@ -14,4 +14,9 @@ jobs:
 
       - name: Deploying App Container
         run: |
-          ls -la
+          cd /deployment/go-app-deployment/actions-runner/go-app/sample-go-app/sample-go-app
+          docker stop GoApp && docker rm GoApp
+          docker image rmi -f go-app
+          docker build -t go-app .
+          docker run -d --name GoApp -p 8081:8081 node-app
+          docker ps
